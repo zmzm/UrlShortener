@@ -1,0 +1,11 @@
+{
+  "name": "UrlShortener-Client",
+  "author": "Vladislav Kovalskij",
+  "dependencies": {
+    "angular": "1.5.3",
+    "angular-route": "1.5.3",
+    "angular-ui-router": "0.2.18",
+    "bootstrap": "3.3.6",
+    "toastr": "2.1.2"
+  }
+}
