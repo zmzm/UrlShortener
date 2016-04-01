@@ -6,7 +6,7 @@
     "url": "https://github.com/zmzm/UrlShortener.git"
   },
   "scripts": {
-    "start": "node server/server.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "body-parser": "1.15.0",

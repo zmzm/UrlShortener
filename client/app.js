@@ -1,8 +1,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('ClientApp', [
-        'ngMaterial',
+    var app = angular.module('Client', [
         'ui.router',
         'Controllers',
         'Services'
