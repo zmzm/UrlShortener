@@ -7,17 +7,17 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" ng-controller="AuthCtrl as vm">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="modal-body">
                         <h2>Registration form</h2>
                         <hr class="star-primary">
-                        <form name="sentMessage" id="loginForm" novalidate="">
+                        <form name="sentMessage" id="loginForm" novalidate="" ng-submit="vm.register()">
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>Name</label>
-                                    <input type="text" class="form-control" placeholder="Name" id="name" required=""
+                                    <input type="text" ng-model="vm.regName" class="form-control" placeholder="Name" id="name" required=""
                                            data-validation-required-message="Please enter your name.">
 
                                     <p class="help-block text-danger"></p>
@@ -26,7 +26,7 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>Password</label>
-                                    <input type="password" class="form-control" placeholder="Password" id="password"
+                                    <input type="password" ng-model="vm.regPass" class="form-control" placeholder="Password" id="password"
                                            required=""
                                            data-validation-required-message="Please enter your password.">
 

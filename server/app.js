@@ -11,7 +11,7 @@ var User = require('./models/user.js');
 var app = express();
 var routes = require('./routes/userRoutes.js');
 
-//mongoose.connect('mongodb://localhost/url');
+mongoose.connect('mongodb://localhost/url');
 
 app.use(express.static(path.join(__dirname, '../client')));
 app.use(logger('dev'));
