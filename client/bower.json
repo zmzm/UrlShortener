@@ -5,6 +5,7 @@
     "angular": "1.5.3",
     "angular-route": "1.5.3",
     "angular-ui-router": "0.2.18",
+    "angular-bootstrap": "*",
     "bootstrap": "3.3.6",
     "angular-toastr": "1.7.0"
   }

@@ -17,7 +17,8 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>URL</label>
-                                    <input type="text" class="form-control" ng-model="vm.url" placeholder="URL" id="name" required=""
+                                    <input type="text" class="form-control" ng-model="vm.url" placeholder="URL"
+                                           id="name" required=""
                                            data-validation-required-message="Please enter your name.">
 
                                     <p class="help-block text-danger"></p>
@@ -26,7 +27,8 @@
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>About</label>
-                                    <input type="text" class="form-control" ng-model="vm.aboutUrl" placeholder="About" id="about"
+                                    <input type="text" class="form-control" ng-model="vm.aboutUrl" placeholder="About"
+                                           id="about"
                                            required=""
                                            data-validation-required-message="Please enter your email address.">
 
@@ -41,6 +43,31 @@
                                 </div>
                             </div>
                         </form>
+                    </div>
+                    <div class="col-lg-7 col-lg-offset-1 userUrls">
+                        <h2>Shorten URLs</h2>
+                        <table class="table table-bordered" style="table-layout:fixed;">
+                            <thead>
+                            <tr>
+                                <th width="30px">Long url</th>
+                                <th width="40px">Short url</th>
+                                <th width="30px">About</th>
+                                <th width="40px">Tags</th>
+                                <th width="10px">Clicks</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="url in vm.urls">
+                                <td class="longText">{{url.long_url}}</td>
+                                <td class="longText"><a href="{{url.short_url}}" style="color: white">{{url.short_url}}</a></td>
+                                <td class="longText">{{url.about}}</td>
+                                <td>tags</td>
+                                <td>0</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage"
+                                        ng-change="vm.pageChanged()"></uib-pagination>
                     </div>
                 </div>
             </div>

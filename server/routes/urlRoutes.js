@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var base58 = require('../lib/base58.js');
+var ObjectId = require('mongoose').Types.ObjectId;
 
 var Url = require('../models/url.js');
 
@@ -43,13 +44,61 @@ router.put('/update/:urlId', function (req, res) {
 
 });
 
-router.get('/user/:userId', function (req, res) {
+router.post('/page/:pageNum', function (req, res) {
+    vm = this;
+    var page = 1;
+    var perPage = 10;
+    var totalCount = 0;
 
+    if (req.params.pageNum) {
+        page = req.params.page;
+    }
+
+    if (req.body.userId) {
+        Url.count({user: new ObjectId(req.body.userId)}, function (err, count) {
+            totalCount = count;
+        });
+        Url.find({user: new ObjectId(req.body.userId)}).skip((page - perPage) * perPage).limit(perPage).exec(function (err, urls) {
+            if (err) {
+                return res.status(500).json({
+                    err: 'No records found.'
+                });
+            }
+
+            res.status(200).json({
+                urls: urls,
+                totalCount: totalCount,
+                status: 'Success for user.'
+            });
+        });
+    }
+    else {
+        Url.count({}, function (err, count) {
+            totalCount = count;
+        });
+        Url.find().skip((page - perPage) * perPage).limit(perPage).exec(function (err, urls) {
+            if (err) {
+                return res.status(500).json({
+                    err: 'No records found.'
+                });
+            }
+            res.status(200).json({
+                urls: urls,
+                totalCount: totalCount,
+                status: 'Success.'
+            });
+        });
+    }
 });
 
 router.get('/:urlId', function (req, res) {
-    res.status(200).json({
-        res: req.params.urlId
+    var id = base58.decode(req.params.urlId);
+    Url.findOne({_id: id}, function (err, url) {
+        if (url) {
+            res.redirect(url.long_url);
+        } else {
+            res.redirect(config.webhost);
+        }
     });
 });
 

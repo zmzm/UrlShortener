@@ -3,6 +3,7 @@
 
     var app = angular.module('Client', [
         'ui.router',
+        'ui.bootstrap',
         'toastr',
         'Controllers',
         'Services'

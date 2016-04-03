@@ -4,7 +4,32 @@
             <div class="intro-text">
                 <span class="name">Awesome application</span>
                 <hr class="star-light">
-                <h1>Home page!</h1>
+                <div class="col-lg-10 col-lg-offset-1">
+                    <h2>Shorten URLs</h2>
+                    <table class="table table-bordered" style="table-layout:fixed;">
+                        <thead>
+                        <tr>
+                            <th width="30px" align="center">Long url</th>
+                            <th width="40px" align="center">Short url</th>
+                            <th width="30px" align="center">About</th>
+                            <th width="40px" align="center">Tags</th>
+                            <th width="10px" align="center">Clicks</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="url in vm.urls">
+                            <td class="longText">{{url.long_url}}</td>
+                            <td class="longText"><a href="{{url.short_url}}" style="color: white">{{url.short_url}}</a>
+                            </td>
+                            <td class="longText">{{url.about}}</td>
+                            <td>tags</td>
+                            <td>0</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage"
+                                    ng-change="vm.pageChanged()"></uib-pagination>
+                </div>
             </div>
         </div>
     </div>

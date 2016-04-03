@@ -98,6 +98,18 @@ header .intro-text .skills {
     font-size: 1.75em;
   }
 }
+@media (min-width: 1200px) {
+  div .userUrls {
+    margin-top: -5.5%;
+  }
+}
+.longText {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 10px;
+  height: 10px;
+  text-overflow: ellipsis;
+}
 @media (min-width: 768px) {
   .navbar-fixed-top {
     padding: 25px 0;
