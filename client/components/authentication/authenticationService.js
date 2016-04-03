@@ -14,7 +14,7 @@
             isLoggedIn: isLoggedIn
         });
 
-        var login = null;
+        var login = false;
 
         function logIn(name, password) {
             return $http.post('/user/login', {username: name, password: password})
@@ -23,10 +23,7 @@
                     return {
                         status: response.status,
                         message: response.data.status,
-                        user: {
-                            name: response.config.data.username,
-                            password: response.config.data.password
-                        }
+                        user: response.data.user
                     };
                 }, function handleError(response) {
                     login = false;
@@ -59,10 +56,7 @@
                     return {
                         status: response.status,
                         message: response.data.status,
-                        user: {
-                            name: response.config.data.username,
-                            password: response.config.data.password
-                        }
+                        user: response.data.user
                     };
                 }, function handleError(response) {
                     login = false;

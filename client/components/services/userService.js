@@ -8,20 +8,20 @@
 
     function UserService($rootScope) {
         var user = {
-            username: '',
+            id: '',
             password: '',
             isAuthorized: false
         };
 
         return {
-            add: function (username, password) {
+            add: function (username, id) {
                 if (!user || !user.isAuthorized) {
                     user.isAuthorized = true;
+                    user.id = id;
                     user.username = username;
-                    user.password = password;
-                    if (!localStorage['user.username']) {
+                    if (!localStorage['user.id']) {
                         localStorage['user.username'] = user.username;
-                        localStorage['user.password'] = user.password;
+                        localStorage['user.id'] = user.id;
                     }
                     $rootScope.user = user;
                 }
@@ -30,10 +30,10 @@
                 if (user.isAuthorized) {
                     user.isAuthorized = false;
                     user.username = '';
-                    user.password = '';
+                    user.id = '';
                     if (localStorage['user.username']) {
                         localStorage.removeItem('user.username');
-                        localStorage.removeItem('user.password');
+                        localStorage.removeItem('user.id');
                     }
                     if ($rootScope.user) {
                         delete $rootScope.user;

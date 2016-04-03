@@ -9,9 +9,11 @@ var passport = require('passport');
 var localStrategy = require('passport-local' ).Strategy;
 var User = require('./models/user.js');
 var app = express();
-var routes = require('./routes/userRoutes.js');
+var userRoutes = require('./routes/userRoutes.js');
+var urlRoutes = require('./routes/urlRoutes.js');
+var config = require('./config.js');
 
-mongoose.connect('mongodb://localhost/url');
+mongoose.connect(config.db.host + config.db.name);
 
 app.use(express.static(path.join(__dirname, '../client')));
 app.use(logger('dev'));
@@ -30,7 +32,8 @@ passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use('/user/', routes);
+app.use('/user/', userRoutes);
+app.use('/url/', urlRoutes);
 
 app.get('/', function(req, res) {
     res.sendFile(path.join(__dirname, '../client', 'index.html'));

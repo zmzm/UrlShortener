@@ -43,7 +43,7 @@
                 <li class="page-scroll">
                     <a href="#" ng-click="$rootScope.showLoginForm = true">Login</a>
                 </li>
-                <li class="page-scroll" ng-if="!user.isAuthorized">
+                <li class="page-scroll">
                     <a href="#" ng-click="$rootScope.showRegisterForm = true">Registration</a>
                 </li>
                 <li class="page-scroll" ng-if="user.isAuthorized">
@@ -84,6 +84,8 @@
 <script src="components/authentication/authenticationService.js"></script>
 <script src="components/authentication/authenticationController.js"></script>
 <script src="components/services/userService.js"></script>
+<script src="components/user/userPageController.js"></script>
+<script src="components/user/userPageService.js"></script>
 <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
 </body>
 </html>

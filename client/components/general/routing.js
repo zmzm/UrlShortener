@@ -8,7 +8,7 @@ var appRouting = function ($stateProvider, $urlRouterProvider) {
         .state('user', {
             url: '/user',
             templateUrl: 'components/user/user.html',
-            controller: '',
+            controller: 'UserPageCtrl as vm',
             access: {restricted: true}
         });
 

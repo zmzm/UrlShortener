@@ -13,7 +13,7 @@
             AuthService.logIn(vm.name, vm.password)
                 .then(function (response) {
                     if (response.status == 200) {
-                        UserService.add(response.user.name, response.user.password);
+                        UserService.add(response.user.username, response.user.id);
                         toastr.success(response.message);
                         $('#loginModal').css('display', 'none');
                         $state.go('user');
@@ -27,9 +27,9 @@
             AuthService.register(vm.regName, vm.regPass)
                 .then(function (response) {
                     if (response.status == 200) {
-                        UserService.add(response.user.name, response.user.password);
+                        UserService.add(response.user.username, response.user.id);
                         toastr.success(response.message);
-                        $('#registerModal').css('display', 'none');
+                        $('#registrationModal').css('display', 'none');
                         $state.go('user');
                     }
                     else {

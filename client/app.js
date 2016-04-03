@@ -13,10 +13,10 @@
 
     app.config(appRouting);
     app.run(['$rootScope', '$state', 'AuthService', 'UserService', function ($rootScope, $state, AuthService, UserService) {
-        if (localStorage['user.username']) {
+        if (localStorage['user.id']) {
             UserService.add(
                 localStorage['user.username'],
-                localStorage['user.password']
+                localStorage['user.id']
             );
         }
     }]);
