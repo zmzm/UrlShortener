@@ -1,12 +1,13 @@
 {
-  "name": "UrlShortener",
+  "name": "UrlShortener-Server",
   "author": "Vladislav Kovalskij",
   "repository": {
     "type": "git",
     "url": "https://github.com/zmzm/UrlShortener.git"
   },
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node -e \"require('grunt').tasks(['default']);\""
   },
   "dependencies": {
     "body-parser": "1.15.0",

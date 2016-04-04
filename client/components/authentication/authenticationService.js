@@ -7,14 +7,14 @@
     AuthService.$inject = ['$http'];
 
     function AuthService($http) {
+        var login = false;
+
         return ({
             logIn: logIn,
             logOut: logOut,
             register: register,
             isLoggedIn: isLoggedIn
         });
-
-        var login = false;
 
         function logIn(name, password) {
             return $http.post('/user/login', {username: name, password: password})
@@ -68,7 +68,7 @@
         }
 
         function isLoggedIn() {
-            return login
+            return login;
         }
     }
 })();

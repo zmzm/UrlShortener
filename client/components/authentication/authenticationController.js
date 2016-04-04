@@ -49,6 +49,6 @@
                         toastr.error(response);
                     }
                 });
-        }
+        };
     }
 })();

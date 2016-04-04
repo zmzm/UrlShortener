@@ -103,6 +103,18 @@ header .intro-text .skills {
     margin-top: -5.5%;
   }
 }
+@media (min-width: 675px) {
+  div .userUrls .btn-position {
+    margin-left: 90%;
+    margin-top: -5%;
+  }
+}
+@media (max-width: 670px) {
+  div .userUrls .btn-position {
+    margin-left: 87%;
+    margin-top: -5%;
+  }
+}
 .longText {
   white-space: nowrap;
   overflow: hidden;

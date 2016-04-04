@@ -9,16 +9,17 @@
     function HomeCtrl(UserPageService, toastr) {
         var vm = this;
         vm.currentPage = 1;
+        vm.itemsPerPage = 10;
         vm.urls = [];
 
         loadData();
 
-        function loadData() {
-            UserPageService.pagination()
+        function loadData(page) {
+            UserPageService.pagination(page)
                 .then(function (response) {
                     if (response.status == 200) {
                         vm.urls = response.urls;
-                        console.log(vm.urls)
+                        console.log(vm.urls);
                         vm.totalItems = response.totalCount;
                     }
                     else {
@@ -28,7 +29,7 @@
         }
 
         vm.pageChanged = function () {
-            console.log(vm.currentPage);
+            loadData(vm.currentPage);
         };
     }
 })();

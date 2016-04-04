@@ -16,6 +16,7 @@ var Url = new Schema({
     short_url: String,
     about: String,
     creation_date: Date,
+    click_count: Number,
     user: {
         type: Schema.ObjectId,
         refs: 'users'
@@ -30,6 +31,7 @@ Url.pre('save', function(next){
         url.created_at = new Date();
         url._id = counter.seq;
         url.short_url = config.webhost + base58.encode(url._id);
+        url.click_count = 0;
         next();
     });
 });

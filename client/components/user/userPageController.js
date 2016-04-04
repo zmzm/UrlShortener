@@ -9,12 +9,13 @@
     function UserPageCtrl(UserPageService, $rootScope, toastr) {
         var vm = this;
         vm.currentPage = 1;
+        vm.itemsPerPage = 10;
         vm.urls = [];
 
         loadData();
 
-        function loadData() {
-            UserPageService.pagination($rootScope.user.id)
+        function loadData(page) {
+            UserPageService.pagination(page, $rootScope.user.id)
                 .then(function (response) {
                     if (response.status == 200) {
                         vm.urls = response.urls;
@@ -27,7 +28,10 @@
         }
 
         vm.pageChanged = function () {
-            console.log(vm.currentPage);
+            loadData(vm.currentPage);
+        };
+        vm.refresh = function(){
+            loadData();
         };
 
         vm.short = function () {
@@ -41,6 +45,6 @@
                         toastr.error(response.message);
                     }
                 });
-        }
+        };
     }
 })();

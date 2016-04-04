@@ -13,7 +13,6 @@
                             <th width="40px" align="center">Short url</th>
                             <th width="30px" align="center">About</th>
                             <th width="40px" align="center">Tags</th>
-                            <th width="10px" align="center">Clicks</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -23,11 +22,10 @@
                             </td>
                             <td class="longText">{{url.about}}</td>
                             <td>tags</td>
-                            <td>0</td>
                         </tr>
                         </tbody>
                     </table>
-                    <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage"
+                    <uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.currentPage"
                                     ng-change="vm.pageChanged()"></uib-pagination>
                 </div>
             </div>

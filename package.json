@@ -1,0 +1,23 @@
+{  "name": "UrlShortener",
+  "author": "Vladislav Kovalskij",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zmzm/UrlShortener.git"
+  },
+  "scripts": {
+    "start": "node server/server.js"
+  },
+  "devDependencies": {
+    "chai": "3.5.0",
+    "grunt": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-mocha": "1.0.0",
+    "grunt-mocha-test": "0.12.7",
+    "mocha": "2.4.5",
+    "supertest": "1.2.0"
+  },
+"engines": {
+    "node": "5.8.0"
+  }
+}

@@ -28,9 +28,10 @@
                 });
         }
 
-        function pagination(userId, pageNum) {
+        function pagination(pageNum, userId) {
             return $http.post('/url/page/' + pageNum, {userId: userId})
                 .then(function handleSuccess(response) {
+                    console.log(response);
                     return {
                         status: response.status,
                         message: response.data.status,

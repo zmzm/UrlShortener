@@ -51,7 +51,7 @@ router.post('/page/:pageNum', function (req, res) {
     var totalCount = 0;
 
     if (req.params.pageNum) {
-        page = req.params.page;
+        page = req.params.pageNum;
     }
 
     if (req.body.userId) {
@@ -95,6 +95,7 @@ router.get('/:urlId', function (req, res) {
     var id = base58.decode(req.params.urlId);
     Url.findOne({_id: id}, function (err, url) {
         if (url) {
+            Url.update({_id: id}, { $inc: { click_count: 1 } }, { upsert: true }, function(){});
             res.redirect(url.long_url);
         } else {
             res.redirect(config.webhost);

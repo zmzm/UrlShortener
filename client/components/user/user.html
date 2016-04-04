@@ -45,7 +45,8 @@
                         </form>
                     </div>
                     <div class="col-lg-7 col-lg-offset-1 userUrls">
-                        <h2>Shorten URLs</h2>
+                            <h2>Shorten URLs</h2>
+                            <button type="submit" class="btn btn-default btn-sm btn-position" ng-click="vm.refresh()">Refresh</button>
                         <table class="table table-bordered" style="table-layout:fixed;">
                             <thead>
                             <tr>
@@ -59,14 +60,16 @@
                             <tbody>
                             <tr ng-repeat="url in vm.urls">
                                 <td class="longText">{{url.long_url}}</td>
-                                <td class="longText"><a href="{{url.short_url}}" style="color: white">{{url.short_url}}</a></td>
+                                <td class="longText"><a href="{{url.short_url}}"
+                                                        style="color: white">{{url.short_url}}</a></td>
                                 <td class="longText">{{url.about}}</td>
                                 <td>tags</td>
-                                <td>0</td>
+                                <td>{{url.click_count}}</td>
                             </tr>
                             </tbody>
                         </table>
-                        <uib-pagination total-items="vm.totalItems" ng-model="vm.currentPage"
+                        <uib-pagination total-items="vm.totalItems" items-per-page="vm.itemsPerPage"
+                                        ng-model="vm.currentPage"
                                         ng-change="vm.pageChanged()"></uib-pagination>
                     </div>
                 </div>
