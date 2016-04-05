@@ -17,6 +17,7 @@ var Url = new Schema({
     about: String,
     creation_date: Date,
     click_count: Number,
+    tags: Array,
     user: {
         type: Schema.ObjectId,
         refs: 'users'

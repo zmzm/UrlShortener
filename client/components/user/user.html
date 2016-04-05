@@ -13,25 +13,27 @@
                 </div>
                 <div class="row custom_container">
                     <div class="col-lg-4">
-                        <form name="sentMessage" id="contactForm" novalidate="" ng-submit="vm.short()">
+                        <form name="myForm" id="contactForm" role="form">
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>URL</label>
-                                    <input type="text" class="form-control" ng-model="vm.url" placeholder="URL"
-                                           id="name" required=""
-                                           data-validation-required-message="Please enter your name.">
-
-                                    <p class="help-block text-danger"></p>
+                                    <input type="url" class="form-control placeholder-white" ng-model="vm.urlName"
+                                           placeholder="http://www.example.com"
+                                           id="url" name="url" required />
                                 </div>
                             </div>
                             <div class="row control-group">
                                 <div class="form-group col-xs-12 floating-label-form-group controls">
                                     <label>About</label>
-                                    <input type="text" class="form-control" ng-model="vm.aboutUrl" placeholder="About"
-                                           id="about"
-                                           required=""
-                                           data-validation-required-message="Please enter your email address.">
-
+                                    <input type="text" class="form-control placeholder-white" ng-model="vm.aboutUrl"
+                                           placeholder="About"
+                                           id="about">
+                                </div>
+                            </div>
+                            <div class="row control-group">
+                                <div class="form-group col-xs-12 floating-label-form-group controls">
+                                    <label>Tags</label>
+                                    <tags-input ng-model="vm.tags"></tags-input>
                                     <p class="help-block text-danger"></p>
                                 </div>
                             </div>
@@ -39,14 +41,17 @@
 
                             <div class="row">
                                 <div class="form-group col-xs-12">
-                                    <button type="submit" class="btn btn-default btn-lg">Short</button>
+                                    <button type="submit" ng-disabled="myForm.$invalid" class="btn btn-default btn-lg" ng-click="vm.short()">Short
+                                    </button>
                                 </div>
                             </div>
                         </form>
                     </div>
                     <div class="col-lg-7 col-lg-offset-1 userUrls">
-                            <h2>Shorten URLs</h2>
-                            <button type="submit" class="btn btn-default btn-sm btn-position" ng-click="vm.refresh()">Refresh</button>
+                        <h2>Shorten URLs</h2>
+                        <button type="submit" class="btn btn-default btn-sm btn-position" ng-click="vm.refresh()">
+                            Refresh
+                        </button>
                         <table class="table table-bordered" style="table-layout:fixed;">
                             <thead>
                             <tr>
@@ -58,12 +63,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <tr ng-repeat="url in vm.urls">
+                            <tr class="table-body" ng-repeat="url in vm.urls" ng-click="vm.urlInfo(url)"
+                                data-toggle="modal" data-target="#formModal">
                                 <td class="longText">{{url.long_url}}</td>
                                 <td class="longText"><a href="{{url.short_url}}"
                                                         style="color: white">{{url.short_url}}</a></td>
                                 <td class="longText">{{url.about}}</td>
-                                <td>tags</td>
+                                <td>
+                                    <div style="display: inline" ng-repeat="tag in url.tags">
+                                        <span class="label label-info">{{tag.text}}</span>
+                                    </div>
+                                </td>
                                 <td>{{url.click_count}}</td>
                             </tr>
                             </tbody>
@@ -74,6 +84,25 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+    <div id="formModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 style="color: black">Edit tags</h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <tags-input ng-model="vm.url.tags"></tags-input>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="vm.urlUpdate()">Edit</button>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>

@@ -12,6 +12,13 @@
         vm.itemsPerPage = 10;
         vm.urls = [];
 
+        vm.tags = [
+            {text: 'just'},
+            {text: 'some'},
+            {text: 'cool'},
+            {text: 'tags'}
+        ];
+
         loadData();
 
         function loadData(page) {
@@ -30,12 +37,29 @@
         vm.pageChanged = function () {
             loadData(vm.currentPage);
         };
-        vm.refresh = function(){
+        vm.refresh = function () {
             loadData();
         };
 
+        vm.urlInfo = function (url) {
+            vm.url = url;
+        };
+
+        vm.urlUpdate = function () {
+            UserPageService.updateUrl(vm.url)
+                .then(function (response) {
+                    if (response.status == 200) {
+                        toastr.success(response.message);
+                        $('#formModal').modal('hide');
+                    }
+                    else {
+                        toastr.error(response.message);
+                    }
+                });
+        };
+
         vm.short = function () {
-            UserPageService.shortUrl($rootScope.user.id, vm.url, vm.aboutUrl)
+            UserPageService.shortUrl($rootScope.user.id, vm.urlName, vm.aboutUrl, vm.tags)
                 .then(function (response) {
                     if (response.status == 200) {
                         toastr.success(response.message);

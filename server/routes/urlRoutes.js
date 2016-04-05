@@ -9,9 +9,14 @@ router.post('/short', function (req, res, next) {
     var longUrl = req.body.long_url;
     var about = req.body.about;
     var user = req.body.user;
+    var tags = req.body.tags;
     var shortUrl = '';
 
     Url.findOne({long_url: longUrl}, function (err, url) {
+        if (err) {
+            return next(err);
+        }
+
         if (url) {
             res.status(200).json({
                 url: url,
@@ -21,7 +26,8 @@ router.post('/short', function (req, res, next) {
             var newUrl = Url({
                 long_url: longUrl,
                 about: about,
-                user: user
+                user: user,
+                tags: tags
             });
             newUrl.save(function (err, url) {
                 if (err) {
@@ -39,13 +45,49 @@ router.post('/short', function (req, res, next) {
     });
 });
 
-router.put('/update/:urlId', function (req, res) {
+router.put('/update/:urlId', function (req, res, next) {
+    var id = req.params.urlId;
+    var urlModel = req.body.url;
+    console.log(id);
 
+    Url.findById({_id: id}, function (err, url) {
+        if (err)
+            return next(err);
 
+        if (!url) {
+            return res.status(404).json({
+                err: 'Url with id ' + id + ' can not be found.'
+            });
+        }
+
+        url.update(urlModel, function (err, url) {
+            if (err)
+                return next(err);
+
+            res.status(200).json({
+                url: url,
+                status: 'Url update successfully!!'
+            });
+        });
+    });
+});
+
+router.post('/tag', function (req, res) {
+    var tag = req.body.tag;
+    Url.find({tags: tag}, function (err, urls) {
+        if (err) {
+            return res.status(500).json({
+                err: err
+            });
+        }
+        res.status(200).json({
+            urls: urls,
+            status: 'Matches found.'
+        });
+    });
 });
 
 router.post('/page/:pageNum', function (req, res) {
-    vm = this;
     var page = 1;
     var perPage = 10;
     var totalCount = 0;
@@ -95,7 +137,8 @@ router.get('/:urlId', function (req, res) {
     var id = base58.decode(req.params.urlId);
     Url.findOne({_id: id}, function (err, url) {
         if (url) {
-            Url.update({_id: id}, { $inc: { click_count: 1 } }, { upsert: true }, function(){});
+            Url.update({_id: id}, {$inc: {click_count: 1}}, {upsert: true}, function () {
+            });
             res.redirect(url.long_url);
         } else {
             res.redirect(config.webhost);

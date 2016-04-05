@@ -7,6 +7,7 @@
     "angular-ui-router": "0.2.18",
     "angular-bootstrap": "*",
     "bootstrap": "3.3.6",
+    "ng-tags-input": "3.0.0",
     "angular-toastr": "1.7.0"
   }
 }

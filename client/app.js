@@ -4,6 +4,7 @@
     var app = angular.module('Client', [
         'ui.router',
         'ui.bootstrap',
+        'ngTagsInput',
         'toastr',
         'Controllers',
         'Services'

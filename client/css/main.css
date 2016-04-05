@@ -103,14 +103,16 @@ header .intro-text .skills {
     margin-top: -5.5%;
   }
 }
+
 @media (min-width: 675px) {
-  div .userUrls .btn-position {
+  .btn-position {
     margin-left: 90%;
     margin-top: -5%;
   }
 }
+
 @media (max-width: 670px) {
-  div .userUrls .btn-position {
+  .btn-position {
     margin-left: 87%;
     margin-top: -5%;
   }
@@ -203,6 +205,25 @@ section.success a.active {
   background: white;
   border: solid 2px white;
 }
+tags-input div .tags {
+  background: #18bc9c;
+  color: white;
+  border-color: #18bc9c;
+  outline: none;
+}
+.input:-moz-placeholder { color: white; }
+.input::-moz-placeholder { color: white; }
+.input::-webkit-input-placeholder { color: white; }
+.input:-ms-input-placeholder { color: white; }
+
+tags-input div .tags ul .tag-list input {
+  color: white;
+  background-color: #18bc9c;
+}
+.input {
+  color: white;
+  background-color: #18bc9c;
+}
 .floating-label-form-group {
   position: relative;
   margin-bottom: 0;
@@ -269,7 +290,7 @@ footer .footer-below {
   padding: 25px 0;
   background-color: #233140;
 }
-.portfolio-modal .modal-content {
+.auth-modal .modal-content {
   border-radius: 0;
   background-clip: border-box;
   -webkit-box-shadow: none;
@@ -279,17 +300,17 @@ footer .footer-below {
   padding: 100px 0;
   text-align: center;
 }
-.portfolio-modal .modal-content h2 {
+.auth-modal .modal-content h2 {
   margin: 0;
   font-size: 3em;
 }
-.portfolio-modal .modal-content img {
+.auth-modal .modal-content img {
   margin-bottom: 30px;
 }
-.portfolio-modal .modal-content .item-details {
+.auth-modal .modal-content .item-details {
   margin: 30px 0;
 }
-.portfolio-modal .close-modal {
+.auth-modal .close-modal {
   position: absolute;
   width: 75px;
   height: 75px;
@@ -298,10 +319,10 @@ footer .footer-below {
   right: 25px;
   cursor: pointer;
 }
-.portfolio-modal .close-modal:hover {
+.auth-modal .close-modal:hover {
   opacity: 0.3;
 }
-.portfolio-modal .close-modal .lr {
+.auth-modal .close-modal .lr {
   height: 75px;
   width: 1px;
   margin-left: 35px;
@@ -313,7 +334,7 @@ footer .footer-below {
   /* Safari and Chrome */
   z-index: 1051;
 }
-.portfolio-modal .close-modal .lr .rl {
+.auth-modal .close-modal .lr .rl {
   height: 75px;
   width: 1px;
   background-color: #2c3e50;
@@ -324,12 +345,17 @@ footer .footer-below {
   /* Safari and Chrome */
   z-index: 1052;
 }
-.portfolio-modal .modal-backdrop {
+.auth-modal .modal-backdrop {
   opacity: 0;
   display: none;
 }
-/*
-.form-control::-webkit-input-placeholder1 { color: white; }
-.form-control:-moz-placeholder1 { color: white; }
-.form-control::-moz-placeholder1 { color: white; }
-.form-control:-ms-input-placeholder1 { color: white; }*/
+.label-hover:hover {
+  cursor: pointer;
+}
+.table-body:hover {
+  background: #3be6c4;
+}
+.placeholder-white:-moz-placeholder { color: white; }
+.placeholder-white::-moz-placeholder { color: white; }
+.placeholder-white::-webkit-input-placeholder { color: white; }
+.placeholder-white:-ms-input-placeholder { color: white; }

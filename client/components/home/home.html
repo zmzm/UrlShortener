@@ -4,8 +4,11 @@
             <div class="intro-text">
                 <span class="name">Awesome application</span>
                 <hr class="star-light">
-                <div class="col-lg-10 col-lg-offset-1">
+                <div class=" col-lg-10 col-lg-offset-1">
                     <h2>Shorten URLs</h2>
+                    <button type="submit" class="btn btn-default btn-sm btn-position" ng-click="vm.refresh()">
+                        Refresh
+                    </button>
                     <table class="table table-bordered" style="table-layout:fixed;">
                         <thead>
                         <tr>
@@ -16,12 +19,16 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr ng-repeat="url in vm.urls">
+                        <tr class="table-body" ng-repeat="url in vm.urls">
                             <td class="longText">{{url.long_url}}</td>
                             <td class="longText"><a href="{{url.short_url}}" style="color: white">{{url.short_url}}</a>
                             </td>
                             <td class="longText">{{url.about}}</td>
-                            <td>tags</td>
+                            <td>
+                                <div style="display: inline" ng-repeat="tag in url.tags">
+                                    <span class="label label-info label-hover" ng-click="vm.findByTag(tag)">{{tag.text}}</span>
+                                </div>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
