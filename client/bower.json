@@ -3,6 +3,7 @@
   "author": "Vladislav Kovalskij",
   "dependencies": {
     "angular": "1.5.3",
+    "angular-mocks": "1.5.3",
     "angular-route": "1.5.3",
     "angular-ui-router": "0.2.18",
     "angular-bootstrap": "*",
